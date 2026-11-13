@@ -1,0 +1,50 @@
+{
+  "name": "opencode-prompt-coach",
+  "version": "1.0.8",
+  "description": "An MCP server that adds a /coach slash command to opencode. Evaluates and rewrites developer prompts using 8 prompt engineering frameworks.",
+  "type": "module",
+  "bin": {
+    "opencode-prompt-coach": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "build": "tsc && node --input-type=module -e \"import{readFileSync,writeFileSync,chmodSync}from'fs';const f='dist/index.js';writeFileSync(f,'#!/usr/bin/env node\\n'+readFileSync(f,'utf8'));chmodSync(f,0o755);\"",
+    "dev": "tsc --watch",
+    "typecheck": "tsc --noEmit",
+    "start": "node dist/index.js",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "opencode",
+    "mcp",
+    "mcp-server",
+    "prompt-engineering",
+    "prompt-coach",
+    "developer-tools",
+    "ai"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blauwtje/opencode-prompt-coach.git"
+  },
+  "bugs": {
+    "url": "https://github.com/blauwtje/opencode-prompt-coach/issues"
+  },
+  "homepage": "https://github.com/blauwtje/opencode-prompt-coach#readme",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.32.2",
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^22.0.0"
+  }
+}
